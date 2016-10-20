@@ -1,38 +1,7 @@
 package keycodes
 
 // #cgo LDFLAGS: -framework Cocoa -framework Carbon
-// #include <Carbon/Carbon.h>
-//
-//typedef struct uniCharBuffer{ UniChar buffer[4]; UniCharCount Length; } uniCharBuffer;
-//uniCharBuffer translate(uint32 keyCode) {
-//	TISInputSourceRef currentKeyboard = TISCopyCurrentKeyboardInputSource();
-//	CFDataRef uchr = (CFDataRef)TISGetInputSourceProperty(currentKeyboard, kTISPropertyUnicodeKeyLayoutData);
-//	const UCKeyboardLayout *keyboardLayout = (const UCKeyboardLayout*)CFDataGetBytePtr(uchr);
-//	UInt32 mods = GetCurrentEventKeyModifiers();
-//	UInt32 modsNoCtrlAlt = mods & ~(optionKey|controlKey);
-//	uniCharBuffer buffer = {};
-//	if(keyboardLayout) {
-//		UInt32 deadKeyState = 0;
-//		UniCharCount maxStringLength = 4;
-//		OSStatus status = UCKeyTranslate(keyboardLayout,
-//										 keyCode, kUCKeyActionDown, 0,
-//										 LMGetKbdType(), 0,
-//										 &deadKeyState,
-//										 maxStringLength,
-//										 &buffer.Length, buffer.buffer);
-//		if (status == noErr && buffer.Length == 0 && deadKeyState)  {
-//			status = UCKeyTranslate(keyboardLayout,
-//									kVK_Space, kUCKeyActionDown, 0,
-//									LMGetKbdType(), 0,
-//									&deadKeyState,
-//									maxStringLength,
-//									&buffer.Length, buffer.buffer);
-//		}
-//	}
-//	return buffer;
-//}
-//
-//
+// #include "darwin_impl.c"
 import "C"
 import "fmt"
 import "unicode"
